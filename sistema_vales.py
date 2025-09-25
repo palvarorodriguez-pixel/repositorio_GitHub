@@ -14,12 +14,18 @@ import numpy as np
 import atexit
 import sys
 
-# Configuración para la nube
+# CONFIGURACIÓN COMPATIBLE CON STREAMLIT CLOUD
 st.set_page_config(
-    page_title="Sistema de Vales de Resguardo DGA", 
+    page_title="Sistema de Vales de Resguardo DGA",
     layout="wide",
-    page_icon="🏛️"
+    page_icon="🏛️",
+    initial_sidebar_state="expanded"
 )
+
+# Evitar errores de caché
+@st.cache_resource(show_spinner=False)
+def load_data():
+    return None
 
 # Configurar logging
 logging.basicConfig(level=logging.INFO)
@@ -762,4 +768,5 @@ def main():
     mostrar_pie_web()
 
 if __name__ == "__main__":
+
     main()
